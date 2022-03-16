@@ -49,7 +49,7 @@ async function routes(request, response) {
 
   /* 404 */
   response.writeHead(404);
-  return response.end;
+  return response.end();
 }
 
 /* error */
