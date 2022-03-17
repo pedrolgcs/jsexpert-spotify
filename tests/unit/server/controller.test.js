@@ -3,7 +3,7 @@ import TestUtil from '../_util/testUtil.js';
 import { Controller } from '../../../server/controllers/index.js';
 import { Service } from '../../../server/services/index.js';
 
-describe('#Controller - test site for controller', () => {
+describe('#Controller - test suit for API controller', () => {
   beforeEach(() => {
     jest.resetAllMocks();
     jest.clearAllMocks();
