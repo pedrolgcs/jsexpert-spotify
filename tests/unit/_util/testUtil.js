@@ -33,6 +33,7 @@ class TestUtil {
         method: '',
         utl: '',
       }),
+
       response: Object.assign(responseStream, {
         writeHead: jest.fn(),
         end: jest.fn(),
@@ -42,7 +43,7 @@ class TestUtil {
     return {
       values: () => Object.values(data),
       ...data,
-    }
+    };
   }
 }
 
