@@ -9,23 +9,22 @@ describe('#Controller - test suit for API controller', () => {
     jest.clearAllMocks();
   });
 
-  test('GetFileStream - should return a file stream', async () => {
-    const controller = new Controller();
-    const mockFileStream = TestUtil.generateReadableStream(['data']);
+  test('getFileStream', async () => {
+    const mockStream = TestUtil.generateReadableStream(['data']);
+    const mockType = '.html';
+    const mockFileName = 'test.html';
 
-    const getFileStream = jest
+    jest
       .spyOn(Service.prototype, Service.prototype.getFileStream.name)
-      .mockResolvedValueOnce({
-        stream: mockFileStream,
-        type: '.html',
+      .mockResolvedValue({
+        stream: mockStream,
+        type: mockType,
       });
 
-    const result = await controller.getFileStream('home/index.html');
+    const controller = new Controller();
+    const sut = await controller.getFileStream(mockFileName);
 
-    expect(getFileStream).toHaveBeenCalledWith('home/index.html');
-    expect(result).toEqual({
-      stream: mockFileStream,
-      type: '.html',
-    })
+    expect(sut.stream).toStrictEqual(mockStream)
+    expect(sut.type).toStrictEqual(mockType)
   });
 });

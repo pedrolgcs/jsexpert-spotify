@@ -22,9 +22,10 @@ class Service {
 
   async getFileStream(file) {
     const { type, filePath } = await this.getFileInfo(file);
+    const stream = this.createFileStream(filePath);
 
     return {
-      stream: this.createFileStream(filePath),
+      stream,
       type,
     };
   }
